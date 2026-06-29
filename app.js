@@ -1,20 +1,19 @@
 /**
  * NEXORA LABS - HIGH-TECH ENTERPRISE PORTFOLIO CORE ENGINE
- * Version: 4.0.0 (Quantum Biotech & Cyber Security Edition)
+ * Version: 5.0.0 (Obsidian Glass & Holographic Edition)
  * Author: Lord Prime Nexus Dev (Blessing Lusakumunu)
  * Tech Stack: React JS, Tailwind CSS, Firebase SDK
  * 
  * DESCRIPTION:
- * Ce script gère la totalité de la logique dynamique de Nexora Labs.
- * Il comprend :
- * - Le système de navigation intelligent avec réduction de hauteur dynamique au défilement.
- * - Le curseur double personnalisé (suiveur de souris réactif).
- * - Le simulateur 3D et le terminal en ligne de commande interactif.
- * - Les compteurs numériques animés pour la section statistiques du Hero.
- * - Le système planétaire orbital interactif pour la section compétences.
- * - Le calculateur interactif de coût/temps connecté à Firestore et WhatsApp.
- * - Le formulaire de contact validé et connecté à Firestore.
- * - La barre de progression de défilement globale située au sommet.
+ * Ce script régit l'intégralité de la logique et des composants de Nexora Labs.
+ * Conçu avec une approche Figma-grade, il intègre :
+ * - Un curseur suiveur avec amorti fluide pour le confort visuel sur ordinateur.
+ * - Une barre de défilement de progression en haut de page.
+ * - Une navigation adaptative (pillule flottante en haut sur ordinateur, barre flottante en bas sur mobile).
+ * - Une section Hero avec un cube 3D holographique, des compteurs animés et un émulateur de terminal macOS.
+ * - Un système d'orbites technologiques animées en CSS/React.
+ * - Un configurateur de devis dynamique connecté à Firestore et WhatsApp.
+ * - Un formulaire de contact sécurisé avec validation et insertion dans Firestore.
  */
 
 const { useState, useEffect, useRef } = React;
@@ -101,11 +100,11 @@ const SERVICES_CATALOG = [
         id: "backend-apis",
         title: "APIs Robustes & Modélisation de Données",
         icon: "fa-solid fa-database",
-        desc: "Conception de fondations backend sécurisées pour alimenter vos applications web, mobiles et objets connectés. Nous structurons des bases de données relationnelles optimisées pour des temps d'accès aux données inférieurs à 100ms.",
+        desc: "Conception de fondations backend sécurisées pour alimenter vos applications web, mobiles et objets connectés. Nos schémas de bases de données sont optimisés pour les requêtes volumineuses et intègrent des mécanismes de mise en cache distribuée.",
         tags: ["PostgreSQL", "MongoDB", "GraphQL", "Redis Cache", "OAuth2 / JWT"],
         targets: "Architectures distribuées, synchronisation multi-terminaux, passerelles de paiement.",
         deliverables: [
-            "Documentation interactive des points d'accès Swagger/Postman",
+            "Documentation interactive des endpoints d'API (Swagger / Postman)",
             "Mécanismes de mise en cache distribuée Redis intégrés",
             "Scripts de migration automatisée et de sauvegarde quotidienne de données",
             "Module d'authentification chiffrée avec double facteur"
@@ -301,7 +300,7 @@ function CustomCursor() {
  */
 function TerminalEmulator() {
     const [history, setHistory] = useState([
-        { cmd: '', output: 'Nexora Labs [Version 4.0.0]\n(c) 2026 Nexora Labs. Tous droits réservés.\nTapez "help" pour voir la liste des commandes disponibles.' }
+        { cmd: '', output: 'Nexora Labs [Version 5.0.0]\n(c) 2026 Nexora Labs. Tous droits réservés.\nTapez "help" pour voir la liste des commandes disponibles.' }
     ]);
     const [input, setInput] = useState('');
     const terminalEndRef = useRef(null);
@@ -347,38 +346,38 @@ function TerminalEmulator() {
     }, [history]);
 
     return (
-        <div className="w-full max-w-[440px] bg-slate-950/90 border border-slate-800/80 rounded-2xl p-5 shadow-2xl backdrop-blur-md font-mono text-[11px] text-slate-300">
-            <div className="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
+        <div className="w-full max-w-[440px] bg-slate-950/85 border border-slate-800/80 rounded-2xl p-5 shadow-2xl backdrop-blur-md font-mono text-[11px] text-slate-300">
+            <div className="flex justify-between items-center border-b border-slate-850 pb-3 mb-4">
                 <div className="flex gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-500"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
                 </div>
-                <span className="text-[9px] text-slate-500">nexora-terminal.sh</span>
+                <span className="text-[9px] text-slate-500 font-bold">nexora-terminal.sh</span>
             </div>
             
-            <div className="h-[160px] overflow-y-auto space-y-3 pr-2 scrollbar-thin scrollbar-thumb-slate-800">
+            <div className="h-[150px] overflow-y-auto space-y-3 pr-2 scrollbar-thin scrollbar-thumb-slate-800">
                 {history.map((item, idx) => (
                     <div key={idx} className="space-y-1">
                         {item.cmd && (
-                            <div className="flex items-center gap-1.5 text-cyan-500">
+                            <div className="flex items-center gap-1.5 text-cyan-400">
                                 <span>guest@nexora:~$</span>
                                 <span>{item.cmd}</span>
                             </div>
                         )}
-                        <pre className="whitespace-pre-wrap font-mono text-slate-400">{item.output}</pre>
+                        <pre className="whitespace-pre-wrap font-mono text-slate-450">{item.output}</pre>
                     </div>
                 ))}
                 <div ref={terminalEndRef}></div>
             </div>
 
-            <form onSubmit={handleCommand} className="flex items-center gap-1.5 border-t border-slate-800 pt-3 mt-3">
-                <span className="text-cyan-500">guest@nexora:~$</span>
+            <form onSubmit={handleCommand} className="flex items-center gap-1.5 border-t border-slate-850 pt-3 mt-3">
+                <span className="text-cyan-400 font-bold">guest@nexora:~$</span>
                 <input 
                     type="text" 
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    className="flex-grow bg-transparent text-slate-200 outline-none"
+                    className="flex-grow bg-transparent text-slate-200 outline-none font-mono"
                     autoComplete="off"
                     placeholder="..."
                 />
@@ -422,12 +421,6 @@ function AnimatedCounter({ target, duration = 2000 }) {
  * Fixed Sticky Header Navigation Component
  */
 function Header({ scrolled, activeSection }) {
-    const [mobileOpen, setMobileOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setMobileOpen(!mobileOpen);
-    };
-
     return (
         <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="nav-container">
@@ -438,34 +431,34 @@ function Header({ scrolled, activeSection }) {
 
                 {/* Desktop Nav menu */}
                 <nav className="hidden lg:block">
-                    <ul className="flex items-center gap-8 list-none">
+                    <ul className="flex items-center gap-6 list-none">
                         <li>
-                            <a href="#accueil" className={`relative font-semibold text-sm ${activeSection === 'accueil' ? 'text-white' : 'text-slate-400'}`}>
+                            <a href="#accueil" className={`nav-item ${activeSection === 'accueil' ? 'active' : ''}`}>
                                 Accueil
                             </a>
                         </li>
                         <li>
-                            <a href="#apropos" className={`relative font-semibold text-sm ${activeSection === 'apropos' ? 'text-white' : 'text-slate-400'}`}>
+                            <a href="#apropos" className={`nav-item ${activeSection === 'apropos' ? 'active' : ''}`}>
                                 À Propos
                             </a>
                         </li>
                         <li>
-                            <a href="#services" className={`relative font-semibold text-sm ${activeSection === 'services' ? 'text-white' : 'text-slate-400'}`}>
+                            <a href="#services" className={`nav-item ${activeSection === 'services' ? 'active' : ''}`}>
                                 Services
                             </a>
                         </li>
                         <li>
-                            <a href="#competences" className={`relative font-semibold text-sm ${activeSection === 'competences' ? 'text-white' : 'text-slate-400'}`}>
+                            <a href="#competences" className={`nav-item ${activeSection === 'competences' ? 'active' : ''}`}>
                                 Expertise
                             </a>
                         </li>
                         <li>
-                            <a href="#portfolio" className={`relative font-semibold text-sm ${activeSection === 'portfolio' ? 'text-white' : 'text-slate-400'}`}>
+                            <a href="#portfolio" className={`nav-item ${activeSection === 'portfolio' ? 'active' : ''}`}>
                                 Portfolio
                             </a>
                         </li>
                         <li>
-                            <a href="#process" className={`relative font-semibold text-sm ${activeSection === 'process' ? 'text-white' : 'text-slate-400'}`}>
+                            <a href="#process" className={`nav-item ${activeSection === 'process' ? 'active' : ''}`}>
                                 Process
                             </a>
                         </li>
@@ -473,35 +466,11 @@ function Header({ scrolled, activeSection }) {
                 </nav>
 
                 <div className="hidden lg:block">
-                    <a href="#contact" className="nav-cta btn text-sm py-2.5 px-6 rounded-lg font-bold">
+                    <a href="#contact" className="nav-cta">
                         <i className="fa-solid fa-rocket"></i> Démarrer un Projet
                     </a>
                 </div>
-
-                {/* Mobile Drawer Trigger button */}
-                <button 
-                    onClick={toggleMenu} 
-                    className="lg:hidden text-white text-xl cursor-pointer"
-                    aria-label="Menu"
-                >
-                    <i className={mobileOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'}></i>
-                </button>
             </div>
-
-            {/* Mobile Navigation overlay drawer */}
-            {mobileOpen && (
-                <div className="fixed inset-0 top-[60px] bg-slate-950/98 backdrop-blur-lg z-[90] flex flex-col p-6 lg:hidden border-t border-slate-800/80">
-                    <nav className="flex flex-col gap-5 text-lg font-semibold mt-8">
-                        <a href="#accueil" onClick={toggleMenu} className={`pb-2 border-b border-slate-900 ${activeSection === 'accueil' ? 'text-purple-500' : 'text-slate-300'}`}>Accueil</a>
-                        <a href="#apropos" onClick={toggleMenu} className={`pb-2 border-b border-slate-900 ${activeSection === 'apropos' ? 'text-purple-500' : 'text-slate-300'}`}>À Propos</a>
-                        <a href="#services" onClick={toggleMenu} className={`pb-2 border-b border-slate-900 ${activeSection === 'services' ? 'text-purple-500' : 'text-slate-300'}`}>Services</a>
-                        <a href="#competences" onClick={toggleMenu} className={`pb-2 border-b border-slate-900 ${activeSection === 'competences' ? 'text-purple-500' : 'text-slate-300'}`}>Expertise</a>
-                        <a href="#portfolio" onClick={toggleMenu} className={`pb-2 border-b border-slate-900 ${activeSection === 'portfolio' ? 'text-purple-500' : 'text-slate-300'}`}>Portfolio</a>
-                        <a href="#process" onClick={toggleMenu} className={`pb-2 border-b border-slate-900 ${activeSection === 'process' ? 'text-purple-500' : 'text-slate-300'}`}>Process</a>
-                        <a href="#contact" onClick={toggleMenu} className="btn nav-cta text-center py-3 rounded-lg font-bold mt-4 text-white">Démarrer un Projet</a>
-                    </nav>
-                </div>
-            )}
         </header>
     );
 }
@@ -512,55 +481,55 @@ function Header({ scrolled, activeSection }) {
 function Hero() {
     return (
         <section id="accueil" className="hero-wrapper">
-            <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-[1200px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="text-left">
-                    <div className="hero-badge">
+                    <div className="badge-pulsing">
                         Disponible pour nouveaux projets
                     </div>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4 tracking-tight">
-                        Transformons Vos <span className="text-gradient-purple-cyan block lg:inline">Idées Digitales</span>
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-5 tracking-tight">
+                        Transformons Vos <span className="text-gradient-cyan-blue block lg:inline">Idées Digitales</span>
                         <span className="block mt-2">en Réalité Exceptionnelle</span>
                     </h1>
-                    <p className="text-sm font-semibold text-slate-400 mb-6 font-heading">
+                    <p className="text-xs font-semibold text-slate-400 mb-6 uppercase tracking-wider">
                         Solutions digitales innovantes par Blessing Lusakumunu (Lord Prime Nexus Dev)
                     </p>
-                    <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8 max-w-xl">
+                    <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-8 max-w-lg">
                         Nexora Labs conçoit et développe des solutions web, mobiles, IA et cybersécurité sur mesure pour propulser votre entreprise dans l'ère numérique avec excellence et innovation. Nous combinons expertise technique de pointe et vision stratégique.
                     </p>
                     <div className="flex gap-4 flex-wrap">
-                        <a href="#contact" className="btn btn-primary btn-glowing-coral text-white font-bold px-8 py-3.5 rounded-lg flex items-center gap-2">
+                        <a href="#contact" className="btn btn-primary-coral text-white font-bold px-8 py-3.5 rounded-full text-xs flex items-center gap-2">
                             <i className="fa-solid fa-rocket"></i> Démarrer un Projet
                         </a>
-                        <a href="#portfolio" className="btn btn-secondary border border-slate-700 hover:border-purple-500 hover:bg-white/5 text-white font-bold px-8 py-3.5 rounded-lg flex items-center gap-2">
+                        <a href="#portfolio" className="btn btn-secondary-glass text-white font-bold px-8 py-3.5 rounded-full text-xs flex items-center gap-2">
                             <i className="fa-solid fa-eye"></i> Voir nos Réalisations
                         </a>
                     </div>
 
                     <div className="grid grid-cols-3 gap-4 mt-12">
-                        <div className="p-4 bg-white/5 border border-white/10 rounded-xl">
+                        <div className="p-4 bg-slate-900/40 border border-white/5 rounded-2xl">
                             <div className="text-2xl md:text-3xl font-black text-white">
                                 <AnimatedCounter target="50" />+
                             </div>
-                            <div className="text-[10px] text-slate-500 uppercase tracking-wider mt-1">Projets Livrés</div>
+                            <div className="text-[9px] text-slate-500 uppercase tracking-wider mt-1">Projets Livrés</div>
                         </div>
-                        <div className="p-4 bg-white/5 border border-white/10 rounded-xl">
+                        <div className="p-4 bg-slate-900/40 border border-white/5 rounded-2xl">
                             <div className="text-2xl md:text-3xl font-black text-white">
                                 <AnimatedCounter target="30" />+
                             </div>
-                            <div className="text-[10px] text-slate-500 uppercase tracking-wider mt-1">Clients Internationaux</div>
+                            <div className="text-[9px] text-slate-500 uppercase tracking-wider mt-1">Clients Globaux</div>
                         </div>
-                        <div className="p-4 bg-white/5 border border-white/10 rounded-xl">
+                        <div className="p-4 bg-slate-900/40 border border-white/5 rounded-2xl">
                             <div className="text-2xl md:text-3xl font-black text-white">
                                 <AnimatedCounter target="5" />+
                             </div>
-                            <div className="text-[10px] text-slate-500 uppercase tracking-wider mt-1">Années d'Expérience</div>
+                            <div className="text-[9px] text-slate-500 uppercase tracking-wider mt-1">Années d'Expérience</div>
                         </div>
                     </div>
                 </div>
 
                 {/* Visual Section: rotating 3D cube + terminal */}
-                <div className="flex flex-col gap-6 items-center">
-                    <div className="cube-visual-container w-full max-w-[400px]">
+                <div className="flex flex-col gap-8 items-center">
+                    <div className="cube-visual-container w-full max-w-[360px]">
                         <div className="cube-wrapper">
                             <div className="cube">
                                 <div className="cube-face cube-face-front">
@@ -604,13 +573,13 @@ function Hero() {
  */
 function About() {
     return (
-        <section id="apropos" className="about-section py-20">
-            <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div className="lg:col-span-5 about-glow-image aspect-[3/4] relative w-full max-w-[450px] mx-auto">
+        <section id="apropos" className="about-section py-24">
+            <div className="max-w-[1200px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div className="lg:col-span-5 about-image-glow aspect-[3/4] relative w-full max-w-[420px] mx-auto">
                     <img 
                         src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop" 
                         alt="Lord Prime Nexus Dev" 
-                        className="w-full h-full object-cover rounded-2xl"
+                        className="w-full h-full object-cover rounded-3xl"
                     />
                 </div>
 
@@ -633,7 +602,7 @@ function About() {
                     <p className="text-slate-400 text-sm leading-relaxed">
                         Notre approche repose sur trois piliers fondamentaux : l'innovation technologique de pointe, la qualité irréprochable du code et l'expérience utilisateur exceptionnelle. Chaque projet est une opportunité de repousser les limites du possible.
                     </p>
-                    <div className="p-4 bg-white/5 border-l-4 border-l-purple-500 rounded-r-xl mt-6">
+                    <div className="p-5 bg-white/5 border-l-4 border-l-purple-500 rounded-r-2xl mt-6">
                         <span className="text-white font-bold block mb-1">⚡ Coder • Créer • Innover</span>
                         <em className="text-xs text-slate-500 block">
                             "Le futur ne s'attend pas. Il se construit ligne par ligne."
@@ -650,8 +619,8 @@ function About() {
  */
 function Services() {
     return (
-        <section id="services" className="py-20">
-            <div className="max-w-[1400px] mx-auto w-full text-center">
+        <section id="services" className="py-24">
+            <div className="max-w-[1200px] mx-auto w-full text-center">
                 <div className="inline-block px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs font-semibold text-cyan-400 uppercase tracking-widest mb-4">
                     NOS SERVICES
                 </div>
@@ -664,17 +633,17 @@ function Services() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
                     {SERVICES_CATALOG.map(serv => (
-                        <div key={serv.id} className="service-neon-card text-left flex flex-col justify-between">
+                        <div key={serv.id} className="service-figma-card text-left flex flex-col justify-between">
                             <div>
-                                <div className="service-neon-icon mb-6">
+                                <div className="service-icon-wrapper">
                                     <i className={serv.icon + " text-white"}></i>
                                 </div>
                                 <h3 className="text-lg font-bold text-white mb-3">{serv.title}</h3>
-                                <p className="text-xs text-slate-400 leading-relaxed mb-6">
+                                <p className="text-xs text-slate-450 leading-relaxed mb-6">
                                     {serv.desc}
                                 </p>
                             </div>
-                            <div className="flex gap-1.5 flex-wrap border-t border-slate-800/80 pt-4 mt-2">
+                            <div className="flex gap-1.5 flex-wrap border-t border-slate-850 pt-4 mt-2">
                                 {serv.tags.map(tag => (
                                     <span key={tag} className="px-2.5 py-0.5 bg-purple-500/10 border border-purple-500/20 rounded-full text-[9px] font-bold text-purple-400">
                                         {tag}
@@ -711,11 +680,11 @@ function Skills() {
     }, []);
 
     return (
-        <section id="competences" className="skills-section py-20">
-            <div className="max-w-[1400px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <section id="competences" className="skills-section py-24">
+            <div className="max-w-[1200px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Visual orbital ring model */}
-                <div className="flex justify-center items-center h-[460px]">
-                    <div className="relative w-[420px] h-[420px]">
+                <div className="flex justify-center items-center h-[420px]">
+                    <div className="skills-orbit-container">
                         <div className="orbit-center-node text-white text-sm font-black">
                             NEXORA
                         </div>
@@ -742,13 +711,13 @@ function Skills() {
                         Maîtrise Technique Avancée
                     </h2>
                     
-                    <div className="space-y-4 mt-6">
+                    <div className="space-y-5 mt-6">
                         <div>
                             <div className="flex justify-between text-xs font-semibold text-slate-300 mb-1.5">
                                 <span>Développement Web (Next.js/React/Node)</span>
                                 <span>95%</span>
                             </div>
-                            <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
                                 <div className="skill-bar-fill" style={{ width: progressFill ? '95%' : '0%' }}></div>
                             </div>
                         </div>
@@ -758,7 +727,7 @@ function Skills() {
                                 <span>Intelligence Artificielle & Pipelines RAG</span>
                                 <span>90%</span>
                             </div>
-                            <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
                                 <div className="skill-bar-fill" style={{ width: progressFill ? '90%' : '0%' }}></div>
                             </div>
                         </div>
@@ -768,7 +737,7 @@ function Skills() {
                                 <span>Cybersécurité (Audits applicatifs & OWASP)</span>
                                 <span>88%</span>
                             </div>
-                            <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
                                 <div className="skill-bar-fill" style={{ width: progressFill ? '88%' : '0%' }}></div>
                             </div>
                         </div>
@@ -778,7 +747,7 @@ function Skills() {
                                 <span>Architecture Cloud & DevOps (AWS/IaC)</span>
                                 <span>92%</span>
                             </div>
-                            <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
                                 <div className="skill-bar-fill" style={{ width: progressFill ? '92%' : '0%' }}></div>
                             </div>
                         </div>
@@ -788,7 +757,7 @@ function Skills() {
                                 <span>Modélisation de Bases de Données & APIs</span>
                                 <span>94%</span>
                             </div>
-                            <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden">
                                 <div className="skill-bar-fill" style={{ width: progressFill ? '94%' : '0%' }}></div>
                             </div>
                         </div>
@@ -806,8 +775,8 @@ function Portfolio() {
     const [selectedProject, setSelectedProject] = useState(null);
 
     return (
-        <section id="portfolio" className="py-20">
-            <div className="max-w-[1400px] mx-auto w-full text-center">
+        <section id="portfolio" className="py-24">
+            <div className="max-w-[1200px] mx-auto w-full text-center">
                 <div className="inline-block px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs font-semibold text-cyan-400 uppercase tracking-widest mb-4">
                     RÉALISATIONS
                 </div>
@@ -835,7 +804,7 @@ function Portfolio() {
                             <div className="px-6 pb-6 pt-0">
                                 <button 
                                     onClick={() => setSelectedProject(proj)} 
-                                    className="btn border border-slate-700 hover:border-cyan-500 hover:bg-white/5 py-2 w-full text-xs font-bold rounded-lg text-white"
+                                    className="btn border border-slate-800 hover:border-cyan-500 hover:bg-white/5 py-2 w-full text-xs font-bold rounded-lg text-white"
                                 >
                                     Étude de cas complète
                                 </button>
@@ -907,7 +876,7 @@ function Portfolio() {
  */
 function Process() {
     return (
-        <section id="process" className="process-section py-20">
+        <section id="process" className="process-section py-24">
             <div className="max-w-[900px] mx-auto w-full text-center relative">
                 <div className="inline-block px-3 py-1 bg-purple-500/10 border border-purple-500/30 rounded-full text-xs font-semibold text-purple-400 uppercase tracking-widest mb-4">
                     NOTRE MÉTHODOLOGIE
@@ -1033,7 +1002,7 @@ Merci de me recontacter pour lancer le cahier des charges.`;
     };
 
     return (
-        <section className="py-20 border-t border-slate-800/80">
+        <section className="py-24 border-t border-slate-850">
             <div className="max-w-[1000px] mx-auto w-full">
                 <div className="text-center mb-12">
                     <span className="inline-block px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-xs font-semibold text-cyan-400 uppercase tracking-widest mb-4">
@@ -1042,13 +1011,13 @@ Merci de me recontacter pour lancer le cahier des charges.`;
                     <h2 className="text-3xl md:text-5xl font-black text-white mb-4">
                         Configurez Votre Projet
                     </h2>
-                    <p className="text-slate-500 text-sm max-w-xl mx-auto">
+                    <p className="text-slate-550 text-sm max-w-xl mx-auto">
                         Simulez les charges d'intégration technique pour obtenir une estimation de complexité et de temps de livraison.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-                    <div className="glass-card p-6 space-y-6 text-left">
+                    <div className="figma-card p-6 space-y-6 text-left">
                         <div>
                             <span className="text-xs font-bold text-slate-400 uppercase block mb-3">Type d'application</span>
                             <div className="space-y-2">
@@ -1129,7 +1098,7 @@ Merci de me recontacter pour lancer le cahier des charges.`;
                         </div>
                     </div>
 
-                    <div className="glass-card p-6 flex flex-col justify-between text-left">
+                    <div className="figma-card p-6 flex flex-col justify-between text-left">
                         <div className="space-y-6">
                             <h3 className="text-lg font-bold text-white">Estimation Prévisionnelle</h3>
                             
@@ -1151,7 +1120,7 @@ Merci de me recontacter pour lancer le cahier des charges.`;
 
                         <button 
                             onClick={handleCalculate} 
-                            className="btn py-3 w-full text-xs font-bold rounded-lg text-white"
+                            className="btn py-3 w-full text-xs font-bold rounded-full text-white"
                             style={{ backgroundColor: '#25d366', boxShadow: '0 4px 15px rgba(37, 211, 102, 0.4)' }}
                         >
                             <i className="fa-brands fa-whatsapp"></i> Valider & Transmettre sur WhatsApp
@@ -1181,14 +1150,14 @@ function ActionBanner() {
                         <a 
                             href="https://wa.me/243994159220" 
                             target="_blank" 
-                            className="btn py-3 px-8 text-xs font-bold rounded-lg text-purple-950 bg-white"
+                            className="btn py-3 px-8 text-xs font-bold rounded-full text-purple-950 bg-white"
                             style={{ boxShadow: '0 4px 15px rgba(255, 255, 255, 0.2)' }}
                         >
                             <i className="fa-brands fa-whatsapp text-purple-950"></i> Discuter sur WhatsApp
                         </a>
                         <a 
                             href="mailto:nexoralabss@gmail.com" 
-                            className="btn border-2 border-white hover:bg-white/10 text-white font-bold py-3 px-8 text-xs rounded-lg"
+                            className="btn border-2 border-white hover:bg-white/10 text-white font-bold py-3 px-8 text-xs rounded-full"
                         >
                             <i className="fa-solid fa-envelope"></i> Envoyer un Email
                         </a>
@@ -1214,7 +1183,7 @@ function FAQ() {
     };
 
     return (
-        <section className="py-20 border-t border-slate-800/80">
+        <section className="py-24 border-t border-slate-850">
             <div className="max-w-[800px] mx-auto w-full text-center">
                 <span className="inline-block px-3 py-1 bg-purple-500/10 border border-purple-500/30 rounded-full text-xs font-semibold text-purple-400 uppercase tracking-widest mb-4">
                     SUPPORT
@@ -1225,7 +1194,7 @@ function FAQ() {
                 
                 <div className="space-y-4 text-left">
                     {FAQ_CATALOG.map((faq, idx) => (
-                        <div key={idx} className="p-4 bg-white/5 border border-white/5 rounded-2xl">
+                        <div key={idx} className="p-4 bg-slate-900/40 border border-white/5 rounded-2xl">
                             <button 
                                 onClick={() => toggleAccordion(idx)} 
                                 className="w-full flex justify-between items-center text-xs font-bold text-white py-2 cursor-pointer outline-none text-left"
@@ -1292,7 +1261,7 @@ function Contact({ onToast }) {
     };
 
     return (
-        <section id="contact" className="py-20">
+        <section id="contact" className="py-24">
             <div className="max-w-[1200px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
                 {/* Contact information cards */}
                 <div className="lg:col-span-5 text-left flex flex-col justify-between space-y-6">
@@ -1308,7 +1277,7 @@ function Contact({ onToast }) {
                         </p>
 
                         <div className="space-y-4">
-                            <a href="mailto:nexoralabss@gmail.com" className="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl hover:border-purple-500/40 hover:translate-x-2 transition-all">
+                            <a href="mailto:nexoralabss@gmail.com" className="flex items-center gap-4 p-4 bg-slate-900/40 border border-white/5 rounded-2xl hover:border-purple-500/40 hover:translate-x-2 transition-all">
                                 <div className="w-10 h-10 bg-purple-500/10 border border-purple-500/30 rounded-lg flex items-center justify-center text-purple-400">
                                     <i className="fa-solid fa-envelope"></i>
                                 </div>
@@ -1318,7 +1287,7 @@ function Contact({ onToast }) {
                                 </div>
                             </a>
 
-                            <a href="https://wa.me/243994159220" target="_blank" className="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl hover:border-purple-500/40 hover:translate-x-2 transition-all">
+                            <a href="https://wa.me/243994159220" target="_blank" className="flex items-center gap-4 p-4 bg-slate-900/40 border border-white/5 rounded-2xl hover:border-purple-500/40 hover:translate-x-2 transition-all">
                                 <div className="w-10 h-10 bg-purple-500/10 border border-purple-500/30 rounded-lg flex items-center justify-center text-purple-400">
                                     <i className="fa-brands fa-whatsapp"></i>
                                 </div>
@@ -1328,7 +1297,7 @@ function Contact({ onToast }) {
                                 </div>
                             </a>
 
-                            <div className="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl">
+                            <div className="flex items-center gap-4 p-4 bg-slate-900/40 border border-white/5 rounded-2xl">
                                 <div className="w-10 h-10 bg-purple-500/10 border border-purple-500/30 rounded-lg flex items-center justify-center text-purple-400">
                                     <i className="fa-solid fa-location-dot"></i>
                                 </div>
@@ -1408,7 +1377,7 @@ function Contact({ onToast }) {
                         </div>
                         <button 
                             type="submit" 
-                            className="btn btn-primary btn-glowing-coral py-3.5 w-full text-xs font-bold rounded-lg text-white"
+                            className="btn btn-primary-coral py-3.5 w-full text-xs font-bold rounded-xl text-white"
                             disabled={loading}
                         >
                             {loading ? (
@@ -1429,8 +1398,8 @@ function Contact({ onToast }) {
  */
 function Footer() {
     return (
-        <footer className="py-16 border-t border-slate-800/80">
-            <div className="max-w-[1400px] mx-auto w-full">
+        <footer className="py-16 border-t border-slate-850">
+            <div className="max-w-[1200px] mx-auto w-full">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-left mb-12">
                     <div className="space-y-4">
                         <div className="text-lg font-black text-white">&lt;NEXORA LABS/&gt;</div>
@@ -1477,7 +1446,7 @@ function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-slate-800/80 pt-6 flex flex-col md:flex-row items-center justify-between text-[11px] text-slate-600 gap-4">
+                <div className="border-t border-slate-850 pt-6 flex flex-col md:flex-row items-center justify-between text-[11px] text-slate-600 gap-4">
                     <p>&copy; 2026 Nexora Labs. Tous droits réservés.</p>
                     <p>Développé par <strong>Lord Prime Nexus Dev</strong> | Kinshasa, RDC</p>
                 </div>
@@ -1575,6 +1544,30 @@ function App() {
                 <FAQ />
                 <Contact onToast={triggerToast} />
             </main>
+
+            {/* Mobile Bottom Tab Bar Navigation */}
+            <nav className="mobile-bottom-nav">
+                <a href="#accueil" className={`mobile-nav-item ${activeSection === 'accueil' ? 'active' : ''}`}>
+                    <i className="fa-solid fa-house"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="#services" className={`mobile-nav-item ${activeSection === 'services' ? 'active' : ''}`}>
+                    <i className="fa-solid fa-gears"></i>
+                    <span>Services</span>
+                </a>
+                <a href="#portfolio" className={`mobile-nav-item ${activeSection === 'portfolio' ? 'active' : ''}`}>
+                    <i className="fa-solid fa-folder-open"></i>
+                    <span>Portfolio</span>
+                </a>
+                <a href="#apropos" className={`mobile-nav-item ${activeSection === 'apropos' ? 'active' : ''}`}>
+                    <i className="fa-solid fa-circle-info"></i>
+                    <span>À Propos</span>
+                </a>
+                <a href="#contact" className={`mobile-nav-item ${activeSection === 'contact' ? 'active' : ''}`}>
+                    <i className="fa-solid fa-sliders"></i>
+                    <span>Devis</span>
+                </a>
+            </nav>
 
             {/* Footer */}
             <Footer />

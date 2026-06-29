@@ -3,84 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Nexora Labs | Ingénierie Logicielle, IA & Cybersécurité - Lord Prime Nexus Dev</title>
+    <title>Nexora Labs | Solutions Digitales Innovantes - Lord Prime Nexus Dev</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Nexora Labs conçoit et développe des applications web/mobiles de haute performance, des solutions d'intelligence artificielle sur-mesure et des audits de cybersécurité offensifs. Fondé par Blessing Lusakumunu (Lord Prime Nexus Dev).">
+    <meta name="description" content="Nexora Labs - Développement web, mobile, IA, cybersécurité et solutions digitales innovantes par Blessing Lusakumunu (Lord Prime Nexus Dev)">
     <meta name="keywords" content="Nexora Labs, ingénierie logicielle, RDC, Kinshasa, Blessing Lusakumunu, corporate, Next.js, React, Node.js, cybersécurité, Firebase, Tailwind CSS">
     <meta name="author" content="Blessing Lusakumunu (Lord Prime Nexus Dev)">
     
-    <!-- Icons & Font Libraries -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Global Style Override Sheet -->
+    <!-- Custom Style Sheet -->
     <link rel="stylesheet" href="./style.css">
 
     <!-- Tailwind Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Custom Tailwind Play CDN configuration to match corporate design variables
+        // Tailwind custom configuration matching requested premium color schemes
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         slate: {
-                            950: '#090d16',
-                            900: '#101726',
-                            800: '#172033',
-                            700: '#1e283f'
+                            950: '#0a0a0f',
+                            900: '#12121a',
+                            800: '#1a1a2e',
+                            700: '#2d1b4e'
                         },
-                        blue: {
-                            500: '#2563eb',
-                            600: '#1d4ed8'
+                        purple: {
+                            500: '#7c3aed'
+                        },
+                        cyan: {
+                            500: '#06b6d4'
+                        },
+                        pink: {
+                            500: '#ec4899'
+                        },
+                        coral: {
+                            500: '#f43f5e'
                         }
                     },
-                    borderRadius: {
-                        'md': '12px',
-                        'lg': '24px'
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="dark-theme">
+<body class="dark-theme select-none">
 
-    <!-- Static Loader shown before React mounts -->
+    <!-- Loading Animation (rotating 3D cube matching original style) -->
     <div class="loader" id="loader">
-        <div class="loader-content">
-            <div class="loader-logo">N</div>
-            <div class="loader-bar"><div class="loader-bar-fill"></div></div>
-            <p class="loader-text">NEXORA LABS</p>
+        <div class="loader-cube">
+            <div class="loader-face"></div>
+            <div class="loader-face"></div>
+            <div class="loader-face"></div>
+            <div class="loader-face"></div>
+            <div class="loader-face"></div>
+            <div class="loader-face"></div>
         </div>
     </div>
 
-    <!-- Background Matrix Digital Nodes canvas -->
-    <div class="bg-layer">
-        <canvas id="particleCanvas"></canvas>
-        <div class="glow-orb orb-primary"></div>
-        <div class="glow-orb orb-secondary"></div>
-    </div>
+    <!-- Background Elements (grid pattern and floating colored blurred orbs) -->
+    <div class="bg-grid"></div>
+    <div class="bg-gradient-orb orb-1"></div>
+    <div class="bg-gradient-orb orb-2"></div>
+    <div class="bg-gradient-orb orb-3"></div>
 
-    <!-- React App Root Mounting Node -->
+    <!-- React Mounting node -->
     <div id="root"></div>
 
     <!-- Firebase SDK Compat Core -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
-    <!-- React 18 & ReactDOM 18 Core Production Libraries -->
+    <!-- React 18 & ReactDOM 18 core libraries -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 
-    <!-- Babel Standalone JSX Compiler for browser execution -->
+    <!-- Babel Standalone compiler -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- Firebase Database Connection Script -->
+    <!-- Local Firebase Configuration -->
     <script src="./firebase-config.js"></script>
 
-    <!-- React Main Component logic with Babel compilation -->
+    <!-- Core React Application compiled with Babel -->
     <script type="text/babel" src="./app.js"></script>
 </body>
 </html>
